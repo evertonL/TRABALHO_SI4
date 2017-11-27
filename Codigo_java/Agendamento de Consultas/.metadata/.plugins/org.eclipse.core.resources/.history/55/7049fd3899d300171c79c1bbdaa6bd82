@@ -1,0 +1,5 @@
+package br.edu.univas.si.model.util;
+
+public class DBUtil {
+
+}

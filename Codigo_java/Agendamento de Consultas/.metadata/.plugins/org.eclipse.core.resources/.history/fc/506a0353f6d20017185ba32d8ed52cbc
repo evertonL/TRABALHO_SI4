@@ -1,0 +1,5 @@
+package br.edu.univas.si.model.to;
+
+public class UsuarioTO {
+
+}

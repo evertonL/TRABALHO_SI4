@@ -1,0 +1,11 @@
+package br.edu.univas.si.model.to;
+
+public class MedicoTO {
+	
+	private String cpf;    //PK
+	private String nome;
+	private String especialidade;
+	
+	
+
+}

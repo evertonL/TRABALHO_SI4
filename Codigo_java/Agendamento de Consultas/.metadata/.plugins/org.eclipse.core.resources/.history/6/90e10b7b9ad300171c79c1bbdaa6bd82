@@ -1,0 +1,42 @@
+package br.edu.univas.si.model.consulta;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import br.edu.univas.si.model.exception.PacienteException;
+import br.edu.univas.si.model.to.PacienteTO;
+import br.edu.univas.si.model.util.DBUtil;
+
+public class PacienteDAO {
+
+	public ArrayList<PacienteTO> populateGridProduto() throws PacienteException{
+		
+		ArrayList<PacienteTO> list = new ArrayList<PacienteTO>();
+		
+		String sql = "SELECT cpf_paciente, nome, telefone, data_nacimento"
+				   + " FROM Paciente"
+				   + " ORDER BY cpf_paciente";
+		
+		Connection connection = null;
+		try{
+				connection = DBUtil.openConnection();
+				PreparedStatement statement = connection.prepareStatement(sql);
+			
+				ResultSet rs = statement.executeQuery();
+				
+				while(rs.next()){
+					PacienteTO produto = new PacienteTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4));	
+					list.add(produto);
+				}
+				
+				return list;
+				
+		}catch(Exception e){
+			throw new PacienteException("Erro ao carregar grid produto em GridProdutoDAO \n"+e);
+		}finally{
+			DBUtil.closeConnection(connection);
+		}
+	}
+}
