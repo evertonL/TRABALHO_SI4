@@ -1,0 +1,10 @@
+package br.edu.univas.si.view;
+
+public class StartApp {
+
+	public static void main(String[] args) {
+		TelaLogin controller = new TelaLogin();
+		controller.setVisible(true);
+	}
+	
+}

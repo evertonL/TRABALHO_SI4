@@ -1,0 +1,9 @@
+Agendamento de consultas 
+
+//Fiz tela de login mais botão salvar não funcionou 
+//Cadastrei paciente
+//Listei os pacientes cadastrados
+//Nao consegui fazer o agendamento de consultas 
+//Nao consegui fazer o cancelamento de consulta
+//Não fiz os Relatorios
+//Tentei fazer sem o banco de dados que crie pois tava dando pobremas 

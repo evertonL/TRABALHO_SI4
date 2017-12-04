@@ -1,0 +1,20 @@
+package br.edu.univas.si.model.dao;
+
+import java.util.ArrayList;
+
+import br.edu.univas.si.model.UsuarioTO;
+
+public class UsuarioDAO {
+
+	private static ArrayList<UsuarioTO> usuarios = new ArrayList<UsuarioTO>();
+	
+	public void GuardarInfromacoesUsuario(UsuarioTO usuario) {
+		usuarios.add(usuario);
+	}
+
+	public void autentifica(UsuarioTO usuario) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

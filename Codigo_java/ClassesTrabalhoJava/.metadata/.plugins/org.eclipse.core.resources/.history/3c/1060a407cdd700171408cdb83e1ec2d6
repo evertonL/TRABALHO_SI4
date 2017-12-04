@@ -1,0 +1,12 @@
+package br.edu.univas.si.main;
+
+import br.edu.univas.si.view.PanelLogin;
+
+public class StartApp {
+
+	public static void main(String[] args) {
+		PanelLogin controller = new PanelLogin();
+		controller.setVisible(true);
+	}
+	
+}

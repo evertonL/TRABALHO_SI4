@@ -1,0 +1,41 @@
+package br.edu.univas.si.model;
+
+import java.util.Date;
+
+public class PacienteTO {
+
+	private double codigo;
+	private Date data;
+	private String nome ;
+//	private String tipo;
+	
+	
+	public double getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(double codigo) {
+		this.codigo = codigo;
+	}
+	public Date getData() {
+		return data;
+	}
+	public void setData(Date data) {
+		this.data = data;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+//	public String getTipo() {
+//		return tipo;
+//	}
+//	public void setTipo(String tipo) {
+//		this.tipo = tipo;
+//	}
+	
+
+	
+	
+}

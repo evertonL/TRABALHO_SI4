@@ -1,0 +1,45 @@
+package br.edu.univas.si.controller;
+
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.edu.univas.si.model.PacienteTO;
+import br.edu.univas.si.model.dao.PacienteDAO;
+import br.edu.univas.si.view.ListPacientePanel;
+
+public class ListPacienteController {
+
+	private ListPacientePanel listContaPanel;
+	private PacienteDAO pacienteDAO;
+	
+	public ListPacienteController() {
+		pacienteDAO = new PacienteDAO();
+		ArrayList<PacienteTO> pacientes = pacienteDAO.listar();
+//		Double saldo = calcSaldo(pacientes);
+//		listContaPanel = new ListPacientePanel(pacientes, saldo);
+		
+	}
+	
+	public Component getComponent() {
+		ArrayList<PacienteTO> pacientes = pacienteDAO.listar();
+//		Double saldo = calcSaldo(pacientes);
+//		listContaPanel.updateContas(pacientes, saldo);
+		return listContaPanel;
+	}
+	
+//	private Double calcSaldo(List<PacienteTO> Pacientes) {
+//		Double saldo = 0.0;
+//		
+//		for (PacienteTO paciente : Pacientes) {
+//			if (paciente.getTipo().equalsIgnoreCase("Pagar")) {
+//				saldo -= paciente.getCodigo();
+//			} else {
+//				saldo += paciente.getCodigo();
+//			}
+//		}
+//		
+//		return saldo;
+//	}
+	
+}

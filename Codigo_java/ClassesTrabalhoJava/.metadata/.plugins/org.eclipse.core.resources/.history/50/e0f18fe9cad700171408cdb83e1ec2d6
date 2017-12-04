@@ -1,0 +1,92 @@
+package br.edu.univas.si.view;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import br.edu.univas.si.listeners.ButtonConfirmaFechar;
+import br.edu.univas.si.model.UsuarioTO;
+import br.edu.univas.si.model.dao.UsuarioDAO;
+import br.edu.univas.si.model.exception.UsuarioException;
+import br.edu.univas.si.view.buttons.ButtonFechar;
+import br.edu.univas.si.view.util.MyFrame;
+
+public class FrameLogin extends MyFrame {
+
+	private static final long serialVersionUID = -5190457170229789597L;
+
+	PanelLogin panelLogin = null;
+	ButtonFechar buttonsLogin = null;
+	
+	public FrameLogin(){
+		super("Login");
+		initialize();
+		
+		setPreferredSize(new Dimension(600, 400));
+		pack();
+		setResizable(false);
+		setLocationRelativeTo(null);	
+	}
+	
+	private void initialize() {
+		add(getPanelLogin(), BorderLayout.NORTH);
+		add(getButtonFecha(), BorderLayout.SOUTH);
+		
+	}
+
+	private PanelLogin getPanelLogin(){
+		if(panelLogin == null){
+			panelLogin = new PanelLogin();
+		}
+		return panelLogin;
+	}
+	
+	private ButtonFechar getButtonFecha(){
+		if(buttonsLogin==null){
+			buttonsLogin = new ButtonFechar();
+			buttonsLogin.addButtonFecha(new ButtonConfirmaFechar() {
+				
+				@Override
+				public void fechaPerformed() {
+					fechaClicked();					
+				}
+				
+				@Override
+				public void confirmaPerformed() {
+					confirmaClicked();
+					
+				}
+			});
+		}
+		return buttonsLogin;
+	}
+	
+	private void fechaClicked(){
+		System.exit(0);
+	}
+	
+	private void confirmaClicked(){
+		//Extrai conteudo de campos.
+		String cpf = this.getPanelLogin().getTextFieldUser().getText().replaceAll("\\D","");
+		String senha = new String(this.getPanelLogin().getTextFieldSenha().getPassword());
+		//Monta TO
+		UsuarioTO usuario = new UsuarioTO();
+		usuario.setCpf(cpf);
+		usuario.setSenha(senha);
+		//Chama controller passando TO FIXME: CHAMAR O CONTROLLER AO INVÉS DA DO MODEL DIRETO.
+		UsuarioDAO d = new UsuarioDAO();
+		try {
+			d.autentifica(usuario);
+		} catch (UsuarioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+//	public static void main(String[] args) {//TODO RETIRAR
+//		
+//		//setlookAndFeel(ACRYL);
+//		setlookAndFeel(AERO);
+//		FrameLogin t = new FrameLogin();
+//		t.setVisible(true);
+//	}
+}

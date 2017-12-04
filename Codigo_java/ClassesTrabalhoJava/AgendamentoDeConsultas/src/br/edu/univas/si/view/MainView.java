@@ -1,0 +1,81 @@
+package br.edu.univas.si.view;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import br.edu.univas.si.listener.LIstenerTopButtons;
+
+public class MainView extends JFrame {
+	
+	private static final long serialVersionUID = -8972781220322077793L;
+	
+	private JPanel centerPanel;
+	private LIstenerTopButtons listener;
+	
+	public MainView() {
+		this.setTitle("Clinica Medica");
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setMinimumSize(new Dimension(800, 600));
+		addComponents();
+	}
+	
+	public void addComponents() {
+		this.getContentPane().setLayout(new BorderLayout());
+		
+		JPanel northPanel = new JPanel();
+		northPanel.setBackground(Color.LIGHT_GRAY);
+		createButtons(northPanel);
+		centerPanel = new JPanel();
+		centerPanel.setLayout(new BorderLayout());
+		
+		this.getContentPane().add(northPanel, BorderLayout.NORTH);
+		this.getContentPane().add(centerPanel, BorderLayout.CENTER);
+	}
+	
+	public JPanel getCenterPanel() {
+		return centerPanel;
+	}
+	
+	private void createButtons(JPanel panel) {
+		JButton addButton = new JButton();
+		addButton.setText("Cadastrar");
+		addButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				listener.cadastrar();
+			}
+		});
+		panel.add(addButton);
+		
+		JButton listButton = new JButton();
+		listButton.setText("Listar");
+		listButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				listener.listar();
+			}
+		});
+		panel.add(listButton);
+	}
+	
+	public void setListener(LIstenerTopButtons listener) {
+		this.listener = listener;
+	}
+
+}
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+package br.edu.univas.si.model.dao;
+
+import java.util.ArrayList;
+
+import br.edu.univas.si.model.UsuarioTO;
+import br.edu.univas.si.model.exception.UsuarioException;
+
+public class UsuarioDAO {
+
+	private static ArrayList<UsuarioTO> usuarios = new ArrayList<UsuarioTO>();
+	
+	public void GuardarInfromacoesUsuario(UsuarioTO usuario) {
+		usuarios.add(usuario);
+	}
+
+public boolean autentifica(UsuarioTO usuario) throws UsuarioException{
+		
+		for(UsuarioTO user : usuarios) {
+		if(usuario.getCpf().equals("everton") && usuario.getSenha().equals("admin") ){
+			return true;
+		}		
+		
+		//Demais usuarios
+		if(user==null){
+			return false;
+		}else if(usuario.getCpf().equals(user.getCpf()) && usuario.getSenha().equals(user.getSenha())){ 
+			return true;
+		}
+		
+		return false;
+	}
+		return false;	
+  }
+}
